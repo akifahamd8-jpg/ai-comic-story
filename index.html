@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mafia Cerita Cinta AI</title>
+<style>
+  :root{
+    --bg:#faf7f4;
+    --card:#ffffff;
+    --ink:#2b2440;
+    --muted:#6f687f;
+    --accent:#8a2f4b;
+    --accent-soft:#f4e3e8;
+    --line:#e8e1ea;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:Georgia,'Times New Roman',serif;
+    background:var(--bg);
+    color:var(--ink);
+    min-height:100vh;
+  }
+  header{
+    text-align:center;
+    padding:40px 20px 24px;
+  }
+  header h1{
+    font-size:2.2rem;
+    letter-spacing:1px;
+    color:var(--ink);
+  }
+  header h1 span{color:var(--accent)}
+  header p{
+    color:var(--muted);
+    margin-top:8px;
+    font-family:'Segoe UI',Arial,sans-serif;
+    font-size:.95rem;
+  }
+  main{
+    max-width:820px;
+    margin:0 auto;
+    padding:0 20px 60px;
+    display:flex;
+    flex-direction:column;
+    gap:24px;
+  }
+  section{
+    background:var(--card);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:24px 26px;
+    box-shadow:0 2px 10px rgba(43,36,64,.05);
+  }
+  .section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    gap:12px;
+    flex-wrap:wrap;
+    border-bottom:1px solid var(--line);
+    padding-bottom:14px;
+    margin-bottom:16px;
+  }
+  .section-head h2{
+    font-size:1.25rem;
+  }
+  .section-head h2 small{
+    display:block;
+    font-family:'Segoe UI',Arial,sans-serif;
+    font-weight:normal;
+    font-size:.8rem;
+    color:var(--muted);
+    margin-top:3px;
+  }
+  button{
+    font-family:'Segoe UI',Arial,sans-serif;
+    font-weight:600;
+    font-size:.9rem;
+    background:var(--accent);
+    color:#fff;
+    border:none;
+    border-radius:999px;
+    padding:10px 22px;
+    cursor:pointer;
+    transition:background .15s, transform .1s;
+  }
+  button:hover{background:#6f2439}
+  button:active{transform:scale(.97)}
+  .idea-title{
+    font-size:1.15rem;
+    font-style:italic;
+    color:var(--accent);
+    margin-bottom:10px;
+  }
+  .idea-hook{
+    font-size:1rem;
+    line-height:1.55;
+    margin-bottom:14px;
+  }
+  .characters{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+  }
+  .char-chip{
+    background:var(--accent-soft);
+    border-radius:10px;
+    padding:10px 14px;
+    flex:1 1 220px;
+    font-family:'Segoe UI',Arial,sans-serif;
+  }
+  .char-chip b{display:block;color:var(--accent);font-size:.85rem;letter-spacing:.5px}
+  .char-chip span{font-size:.85rem;color:var(--muted)}
+  .scenes{
+    display:flex;
+    gap:14px;
+    flex-wrap:wrap;
+  }
+  .scene{
+    flex:1 1 220px;
+    background:var(--accent-soft);
+    border-radius:10px;
+    padding:14px;
+    font-family:'Segoe UI',Arial,sans-serif;
+  }
+  .scene b{
+    display:block;
+    color:var(--accent);
+    text-transform:uppercase;
+    font-size:.75rem;
+    letter-spacing:1px;
+    margin-bottom:6px;
+  }
+  .scene p{font-size:.9rem;line-height:1.5}
+  .captions{display:flex;flex-direction:column;gap:10px}
+  .caption{
+    background:var(--accent-soft);
+    border-left:4px solid var(--accent);
+    border-radius:8px;
+    padding:12px 14px;
+    font-style:italic;
+    font-size:.98rem;
+  }
+  .caption small{
+    display:block;
+    font-family:'Segoe UI',Arial,sans-serif;
+    font-style:normal;
+    font-size:.72rem;
+    color:var(--muted);
+    margin-top:5px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+  }
+  footer{
+    text-align:center;
+    color:var(--muted);
+    font-family:'Segoe UI',Arial,sans-serif;
+    font-size:.78rem;
+    padding-bottom:40px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Mafia <span>Cerita Cinta</span> AI</h1>
+  <p>Idea drama mafia romantis gaya Malaysia — pantas untuk TikTok. Tiada apa disimpan; muat semula untuk mula baharu.</p>
+</header>
+
+<main>
+
+  <!-- 1. IDEA CERITA -->
+  <section id="story-idea">
+    <div class="section-head">
+      <h2>1 · Idea Cerita <small>Konsep, watak utama, dan cangkuk cerita</small></h2>
+      <button id="btn-idea">Jana Idea Cerita Baharu</button>
+    </div>
+    <div id="idea-body"></div>
+  </section>
+
+  <!-- 2. ALUR BABAK -->
+  <section id="scene-flow">
+    <div class="section-head">
+      <h2>2 · Alur Babak <small>Cerita pantas 3 bahagian untuk idea semasa</small></h2>
+      <button id="btn-scenes">Segar Semula Alur Babak</button>
+    </div>
+    <div class="scenes" id="scenes-body"></div>
+  </section>
+
+  <!-- 3. KAPSYEN -->
+  <section id="captions">
+    <div class="section-head">
+      <h2>3 · Kapsyen <small>Baris pendek gaya TikTok untuk setiap babak</small></h2>
+      <button id="btn-captions">Jana Kapsyen Baharu</button>
+    </div>
+    <div class="captions" id="captions-body"></div>
+  </section>
+
+</main>
+
+<footer>Ideanya dijana secara tempatan — semua watak dan peristiwa adalah rekaan.</footer>
+
+<script>
+(function(){
+  // ---------- Data ----------
+  const NAMES = ["Zayn Ridzuan","Adrik Tan","Luqman Hakim","Damian Koh","Arman Yusof","Rafiq Zulkarnain","Emyr Danish","Hafiz Rahman"];
+  const HEROINES = ["Aisyah Rahman","Mei Ling Cheah","Nurul Izzah","Sofia Abdullah","Priya Nair","Farah Danisha","Cheryl Wong","Iman Zahra"];
+  const CITIES = ["Kuala Lumpur","Pulau Pinang","Johor Bahru","Ipoh","Kota Kinabalu","Melaka","Klang","Shah Alam"];
+  const SETTINGS = [
+    " sebuah bar karaoke belakang tabir yang berkepul asap",
+    " bumbung sebuah hotel mewah di Kuala Lumpur",
+    " sebuah gerai mamak tengah malam",
+    " marina bot layar persendirian di Johor",
+    " sebuah rumah kedai lama di George Town",
+    " sebuah parkir bawah tanah di KLCC yang basah dek hujan",
+    " sebuah kelab satay yang malap cahayanya",
+    " gudang-gudang pelabuhan di Klang"
+  ];
+  const CONFLICTS = [
+    "dia secara rahsia melindungi keluarganya daripada hutang yang tidak pernah mereka lakukan",
+    "abangnya mencuri daripada sindiketnya — dan dia terpaksa memilih antara darah dan cinta",
+    "dia tanpa sengaja memuat turun gambar satu penghantaran yang boleh meruntuhkan empayarnya",
+    "perkahwinan aturan keluarga dengan anak gadis klan pesaing sudah ditandatangani",
+    "dia adalah wartawan menyamar yang ditugaskan untuk mendedahkan dirinya",
+    "orang kanan terdekatnya mengkhianatinya, dan dialah satu-satunya saksi yang dia percayai",
+    "bapa mereka pernah menjadi rakan kongsi — sehingga seorang mengarahkan kehilangan yang seorang lagi",
+    "keluarganya berhutang budi kepada keluarganya sejak satu generasi yang tidak pernah diketahui"
+  ];
+  const HOOK_TEMPLATES = [
+    "Dia tidak sepatutnya jatuh cinta kepada wanita yang dia diperintahkan untuk pantau.",
+    "Satu panggilan telefon menjadikan dia musuhnya. Satu pandangan menjadikan dia kelemahannya.",
+    "Dia masuk ke dunianya untuk mencari cerita — dan menjadi tajuk berita itu sendiri.",
+    "Raja dunia gelap Kuala Lumpur baru saja bertemu satu-satunya orang yang tidak takut padanya.",
+    "Cinta adalah satu-satunya kontrak yang tidak pernah dia rancang untuk tandatangani.",
+    "Dia berjanji tidak akan tunduk kepada sesiapa. Dia berjanji tidak akan tunduk langsung — sehingga bertemu dengannya."
+  ];
+
+  const SCENE_START = [
+    "Hujan menghantari jalan-jalan {city} ketika {heroine} terseret masuk ke{setting} — dan terus ke wilayah kuasa {hero}. Dia melindungi {heroine} daripada anak buahnya dengan satu isyarat tangan dan satu amaran yang belum dia fahami.",
+    "{heroine} menghantar satu sampul misteri ke{setting} atas permintaan abangnya. {hero} menyekatnya, membaca nama {heroine}, dan memutuskan dia adalah satu-satunya 'masalah' yang enggan dia hapuskan.",
+    "Di{setting}, {hero} memerhati {heroine} berdebat dengan kutung sindiket atas hutang yang bukan tanggungjawabnya. Dia menjelaskannya secara tunai — bukan untuk menyelamatkan {heroine}, tetapi untuk memiliki budi itu."
+  ];
+  const SCENE_MIDDLE = [
+    "Khabar pengkhianatan sampai ke telinga {hero}: seseorang dalam kalangannya menggunakan {heroine} sebagai umpan. Dia merobohkan separuh {city} untuk sampai lebih dahulu, dan dalam pelarian basah dek hujan di{setting}, mereka mengaku apa yang selama ini tidak berani disebut.",
+    "{heroine} menemui fail rahsia {hero} — lengkap dengan gambarnya, bertarikh berbulan-bulan sebelum mereka bertemu. Dia berdepan dengan {hero} di{setting} pukul 3 pagi, pistol di tangan, hati remuk, menunggu jawapan.",
+    "Klan pesaing menawarkan {hero} satu persetujuan: serahkan {heroine}, dan perang tamat. Dia membakar kontrak itu di hadapan semua ketua yang berkumpul di{setting} — dan mengisytiharkan perang sebagai gantinya."
+  ];
+  const SCENE_END = [
+    "Fajar di atas {city}. {hero} menyerahkan separuh empayar untuk menamatkan permusuhan, dan {heroine} menerbitkan kebenaran tanpa menyebut namanya. Dalam babak terakhir, mereka berkongsi teh tarik di{setting} — dua insan yang tidak akan pernah disebut bersama oleh bandar ini.",
+    "{hero} menanggung segalanya, menyerahkan takhtanya demi kebebasan {heroine}. Bertahun-tahun kemudian, {heroine} menemui sepucuk surat dari{setting}: setiap serbuan yang dihalangnya, setiap malam dia menjaga {heroine} dari kegelapan.",
+    "Pertarungan terakhir di{setting} tamat dengan {hero} berdarah dan {heroine} enggan beredar. Menentang semua undang-undang kedua-dua dunia mereka, mereka keluar dari {city} bersama-sama — diburu, tetapi bebas."
+  ];
+
+  const CAPTION_TEMPLATES = [
+    {start:["POV: lelaki paling ditakuti di {city} baru sahaja ternampak kau memandangnya 👁️","Dia suruh 'pantau dia' — tiada siapa cakap apa jadi kalau dia jatuh cinta 🌧️","Satu sampul. Satu hutang. Satu sebab dia tak boleh lepaskan dia. 💌"],
+     mid:["Pengkhianatan? Bukan. Obsesi, dengan saksi hidup. 🔥","Dia jumpa failnya. Gambarnya. Tarikh: sebelum mereka bertemu. 😳","Dia bakar kontrak berjuta-juta. Demi dia. 💸❌"],
+     end:["Dia serahkan empayar. Dia simpan rahsia. 🕊️","Ada lelaki bercinta lalu bercerita. Dia berdarah dan terus diam. 🖤","Mereka keluar dari {city} bersama — diburu, tetapi bebas. 🚨💔"]},
+    {start:["Hutang tu bukan dia punya. Budi tu dia punya. 🎴","Satu isyarat tangan. Semua orang tarik diri. Termasuk anak buah dia. 🤚","Mamak tengah malam lain macam bila dia tengah perhati 😳☕"],
+     mid:["Konfrontasi pukul 3 pagi. Pistol di tangan. Hati di atas lantai. 🔫💔","'Cakap kau tak pernah pantau aku.' …Dia terus diam. 🌧️","Fail tu ada nama dia. Kebenaran tu ada kesunyian dia. 📁"],
+     end:["Separuh empayar, hilang. Satu nama, terlindung. 🕊️","Teh tarik untuk dua orang. Bandar ini takkan tahu. 🥤❤️","Setiap serbuan dia halang. Setiap malam dia jaga. 🖤"]},
+    {start:["Dia diperintah pantau dia. Perintah tak cakap pasal jatuh cinta. 👁️❤️","Dia datang cari cerita. Dia jadi jalan ceritanya. 📰","Raja KL jumpa satu-satunya orang yang tak takut padanya 👑"],
+     mid:["Dia guna dia sebagai umpan. Dia bakar bandar cari dia. 🔥","Saksi? Bukan. Satu-satunya orang yang dia percaya. 🤝","Dia isytihar perang sebab satu kontrak — dan seorang perempuan. ⚔️"],
+     end:["Diburu dua keluarga. Bebas untuk satu malam. 🌃","Dia serahkan takhta. Dia serahkan cerita. 👑❌","Babak terakhir: dua cawan, satu meja, sifar nama. 🥤✨"]}
+  ];
+
+  // ---------- Helpers ----------
+  const pick = arr => arr[Math.floor(Math.random()*arr.length)];
+  const fill = (tpl, ctx) => tpl
+    .replaceAll("{hero}", ctx.hero)
+    .replaceAll("{heroine}", ctx.heroine)
+    .replaceAll("{city}", ctx.city)
+    .replaceAll("{setting}", ctx.setting);
+
+  let currentIdea = null;
+  let captionSetIndex = 0;
+
+  function makeIdea(){
+    return {
+      hero: pick(NAMES),
+      heroine: pick(HEROINES),
+      city: pick(CITIES),
+      setting: pick(SETTINGS),
+      conflict: pick(CONFLICTS),
+      hook: pick(HOOK_TEMPLATES)
+    };
+  }
+
+  function ideaTitle(ctx){
+    return `Hutang di ${ctx.city} — sebuah romantis mafia`;
+  }
+
+  // ---------- Render ----------
+  function renderIdea(ctx){
+    document.getElementById("idea-body").innerHTML = `
+      <p class="idea-title">${ideaTitle(ctx)}</p>
+      <p class="idea-hook"><strong>Cangkuk:</strong> ${ctx.hook}</p>
+      <div class="characters">
+        <div class="char-chip"><b>WATAK LELAKI UTAMA</b><span>${ctx.hero} — raja dunia gelap Kuala Lumpur yang paling senyap dan paling berbahaya.</span></div>
+        <div class="char-chip"><b>WATAK WANITA UTAMA</b><span>${ctx.heroine} — berani, tajam lidah, dan terlalu jauh tersesat.</span></div>
+        <div class="char-chip"><b>CERITA BERHUBUNG</b><span>${ctx.conflict}.</span></div>
+      </div>`;
+  }
+
+  function renderScenes(ctx, variant){
+    const set = [
+      SCENE_START[variant % SCENE_START.length],
+      SCENE_MIDDLE[variant % SCENE_MIDDLE.length],
+      SCENE_END[variant % SCENE_END.length]
+    ];
+    document.getElementById("scenes-body").innerHTML = [
+      ["Permulaan", set[0]],
+      ["Pertengahan", set[1]],
+      ["Penghabisan", set[2]]
+    ].map(([label,tpl]) =>
+      `<div class="scene"><b>${label}</b><p>${fill(tpl, ctx)}</p></div>`
+    ).join("");
+  }
+
+  let captionVariant = 0;
+
+  function renderCaptions(ctx, setIdx){
+    const set = CAPTION_TEMPLATES[setIdx % CAPTION_TEMPLATES.length];
+    const rows = [
+      ["Babak 1 · Permulaan", set.start, 0],
+      ["Babak 2 · Pertengahan", set.mid, 1],
+      ["Babak 3 · Penghabisan", set.end, 2]
+    ];
+    document.getElementById("captions-body").innerHTML = rows.map(([label, arr, i]) =>
+      `<div class="caption">"${fill(arr[captionVariant % arr.length], ctx)}"<small>${label}</small></div>`
+    ).join("");
+  }
+
+  let sceneVariant = 0;
+
+  // ---------- Actions ----------
+  document.getElementById("btn-idea").addEventListener("click", () => {
+    currentIdea = makeIdea();
+    renderIdea(currentIdea);
+    renderScenes(currentIdea, 0);
+    captionVariant = 0;
+    renderCaptions(currentIdea, captionSetIndex);
+  });
+
+  document.getElementById("btn-scenes").addEventListener("click", () => {
+    sceneVariant++;
+    renderScenes(currentIdea, sceneVariant);
+  });
+
+  document.getElementById("btn-captions").addEventListener("click", () => {
+    captionSetIndex++;
+    captionVariant++;
+    renderCaptions(currentIdea, captionSetIndex);
+  });
+
+  // ---------- Contoh awal (halaman tidak pernah kosong) ----------
+  const examples = [
+    {hero:"Zayn Ridzuan", heroine:"Aisyah Rahman", city:"Kuala Lumpur",
+     setting:" bumbung sebuah hotel mewah di Kuala Lumpur",
+     conflict:"dia secara rahsia melindungi keluarganya daripada hutang yang tidak pernah mereka lakukan",
+     hook:"Satu panggilan telefon menjadikan dia musuhnya. Satu pandangan menjadikan dia kelemahannya."},
+    {hero:"Adrik Tan", heroine:"Mei Ling Cheah", city:"Pulau Pinang",
+     setting:" sebuah rumah kedai lama di George Town",
+     conflict:"dia tanpa sengaja memuat turun gambar satu penghantaran yang boleh meruntuhkan empayarnya",
+     hook:"Dia masuk ke dunianya untuk mencari cerita — dan menjadi tajuk berita itu sendiri."}
+  ];
+
+  currentIdea = examples[0];
+  sceneVariant = 0;
+  captionVariant = 0;
+  renderIdea(currentIdea);
+  renderScenes(currentIdea, 0);
+  renderCaptions(currentIdea, 0);
+})();
+</script>
+</body>
+</html>
